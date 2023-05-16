@@ -20,8 +20,6 @@ First, install Nix (the package manager) on MacOS or Linux: https://nixos.org/do
 
 Create your own repository using this one as your template. 
 
-Make sure that the `system` variable in `flake.nix` matches your target system (i.e. `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`, `x86-64-darwin`).
-
 Update references to `heywoodlh` to your desired username in `./flake.nix`:
 
 Then, assuming you have `nix` installed, you could run this one-liner to install the config (replace `GITHUB_USERNAME` with your GitHub username and `USERNAME` with your user that you want managed with Home-Manager that is defined in `flake.nix`):

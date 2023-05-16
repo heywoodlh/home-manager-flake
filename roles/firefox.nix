@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   programs.firefox = {
     enable = true;
+    package = pkgs.runCommand "firefox-0.0.0" { } "mkdir $out"; # Assumes Firefox is installed with brew, apt, etc.
     profiles.default = {
       search.force = true; # This is required so the build won't fail each time
       isDefault = true;
