@@ -25,7 +25,7 @@
           modules = [
             ./roles/vim.nix
             ./roles/vscode.nix
-            ./roles/firefox.nix
+            ./roles/firefox.nix 
             {
               home = {
                 username = "heywoodlh";
@@ -33,6 +33,12 @@
               };
               home.stateVersion = "22.11";
               fonts.fontconfig.enable = true;
+              # Override Firefox package if on ARM64 MacOS
+              # Assumes Firefox installed via Brew or other method
+              programs.firefox.package = if "${system}" == "aarch64-darwin" then
+                pkgs.runCommand "firefox-0.0.0" { } "mkdir $out"
+              else
+                pkgs.firefox;
             }
           ];
           extraSpecialArgs = inputs;
